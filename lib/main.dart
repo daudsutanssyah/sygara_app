@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:sygara_app/screens/Home/category_buah.dart';
 import 'package:sygara_app/screens/Home/home_screen.dart';
+import 'package:sygara_app/screens/detail_page.dart';
 import 'package:sygara_app/screens/login_page.dart';
 import 'package:sygara_app/screens/register_page.dart';
 import 'package:sygara_app/screens/splash_screen.dart';
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false, 
-    home: HomeScreen());
+    home: DetailPage());
   }
 }
