@@ -12,9 +12,11 @@ class _DetailPageState extends State<DetailPage> {
   int quantity = 1;
 
   void increment() {
-    setState(() {
-      quantity++;
-    });
+    if (quantity < 10) {
+      setState(() {
+        quantity++;
+      });
+    }
   }
 
   void decrement() {
