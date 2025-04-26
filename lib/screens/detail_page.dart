@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sygara_app/screens/Cart/cart_page.dart';
 import 'package:sygara_app/themes/themes.dart';
 
 class DetailPage extends StatefulWidget {
@@ -32,7 +33,9 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Image.asset(
             'assets/icon/ic-arrow-back.png',
             width: 40,
@@ -170,6 +173,10 @@ class _DetailPageState extends State<DetailPage> {
             ),
             InkWell(
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CartPage()),
+                );
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
