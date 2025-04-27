@@ -47,49 +47,50 @@ class _BottomNavBarState extends State<BottomNavBar> {
         child: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-              label: 'Home',
               icon: Image.asset(
-                'assets/icon/ic-home.png',
+                "assets/icon/ic-home.png",
                 width: 20,
                 height: 20,
               ),
+
+              label: "Beramda",
             ),
             BottomNavigationBarItem(
-              label: 'Cart',
               icon: Image.asset(
-                'assets/icon/ic-cart.png',
+                "assets/icon/ic-cart.png",
                 width: 20,
                 height: 20,
               ),
+              label: "Keranjang",
             ),
             BottomNavigationBarItem(
-              label: 'Order',
               icon: Image.asset(
-                'assets/icon/ic-pesanan.png',
+                "assets/icon/ic-pesanan.png",
                 width: 20,
                 height: 20,
               ),
+              label: "Pesanan",
             ),
             BottomNavigationBarItem(
-              label: 'Profil',
               icon: Image.asset(
-                'assets/icon/ic-home.png',
+                "assets/icon/ic-profil.png",
                 width: 20,
                 height: 20,
               ),
+              label: "Profil",
             ),
           ],
           currentIndex: selectedIndex,
           selectedItemColor: primaryColor,
           unselectedItemColor: secondaryColor,
           onTap: itemOnTapped,
-          type: BottomNavigationBarType.fixed,
           backgroundColor: whiteColor,
-          selectedLabelStyle: TextStyle(
+          type: BottomNavigationBarType.fixed,
+          selectedLabelStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
-          unselectedLabelStyle: TextStyle(
+          unselectedLabelStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
