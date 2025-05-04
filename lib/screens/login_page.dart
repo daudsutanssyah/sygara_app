@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sygara_app/screens/Profil/reset_password_page.dart';
+import 'package:sygara_app/screens/bottom_nav_bar.dart';
+import 'package:sygara_app/screens/register_page.dart';
 
 import 'package:sygara_app/themes/themes.dart';
 
@@ -96,9 +99,19 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "Lupa Password?",
-                  style: TextStyle(color: Color(0xff357954)),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResetPasswordPage(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Lupa Password?",
+                    style: TextStyle(color: Color(0xff357954)),
+                  ),
                 ),
               ],
             ),
@@ -106,7 +119,12 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 45,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BottomNavBar()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   shape: RoundedRectangleBorder(
@@ -120,7 +138,21 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
 
-              children: [Text('Belum punya akun?'), Text(' Daftar')],
+              children: [
+                Text('Belum punya akun?'),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                    );
+                  },
+                  child: Text(
+                    ' Daftar',
+                    style: primaryTextStyle.copyWith(fontSize: 16),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

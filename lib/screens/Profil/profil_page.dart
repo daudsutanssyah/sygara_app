@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sygara_app/screens/Profil/edit_profil_page.dart';
 import 'package:sygara_app/screens/Profil/reset_password_page.dart';
+import 'package:sygara_app/screens/splash_screen.dart';
 import 'package:sygara_app/themes/themes.dart';
 
 class ProfilPage extends StatelessWidget {
@@ -188,7 +189,14 @@ class ProfilPage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SplashScreen(),
+                                      ),
+                                    );
+                                  },
                                   child: Text(
                                     'Yakin',
                                     style: TextStyle(

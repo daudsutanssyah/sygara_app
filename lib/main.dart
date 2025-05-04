@@ -5,6 +5,7 @@ import 'package:sygara_app/screens/Cart/cart_page.dart';
 import 'package:sygara_app/screens/Home/category_buah.dart';
 import 'package:sygara_app/screens/Home/home_screen.dart';
 import 'package:sygara_app/screens/Order/empty_order_page.dart';
+import 'package:sygara_app/screens/Order/order_page.dart';
 import 'package:sygara_app/screens/Profil/edit_profil_page.dart';
 import 'package:sygara_app/screens/Profil/profil_page.dart';
 import 'package:sygara_app/screens/Profil/reset_password_page.dart';
@@ -27,6 +28,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false, 
-    home: CheckoutPage());
+    home: SplashScreen());
   }
 }

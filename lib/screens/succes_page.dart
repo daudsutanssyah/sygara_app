@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sygara_app/screens/Order/order_page.dart';
 import 'package:sygara_app/themes/themes.dart';
 
 class SuccesPage extends StatelessWidget {
@@ -55,7 +56,12 @@ class SuccesPage extends StatelessWidget {
             width: 372,
             height: 45,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OrderPage()),
+                );
+              },
               style: TextButton.styleFrom(
                 backgroundColor: primaryColor,
                 shape: RoundedRectangleBorder(

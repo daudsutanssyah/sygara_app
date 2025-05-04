@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sygara_app/screens/Cart/cart_page.dart';
 import 'package:sygara_app/screens/Home/home_screen.dart';
-import 'package:sygara_app/screens/Order/empty_order_page.dart';
+import 'package:sygara_app/screens/Order/order_page.dart';
 import 'package:sygara_app/screens/Profil/profil_page.dart';
 import 'package:sygara_app/themes/themes.dart';
 
@@ -18,7 +18,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> screenList = [
     HomeScreen(),
     CartPage(),
-    EmptyOrderPage(),
+    OrderPage(),
     ProfilPage(),
   ];
 
