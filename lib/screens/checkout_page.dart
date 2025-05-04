@@ -133,11 +133,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: mediumGreyColor),
+                      borderSide: BorderSide(color: secondaryColor, width: 1),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: mediumGreyColor),
+                      borderSide: BorderSide(color: secondaryColor, width: 1),
                     ),
                     hintText: 'cth. jalan jendral sudirman, disamping gang...',
                     hintStyle: secondaryTextStyle,
@@ -148,27 +148,25 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 SizedBox(height: 10),
                 DropdownButtonFormField<String>(
                   icon: Image.asset(
-                    'assets/icon/ic-arrow.png',
-                    width: 12.4,
-                    height: 7.9,
+                    "assets/icon/ic-arrow.png",
+                    width: 16,
+                    height: 16,
                   ),
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(
                       left: 16,
                       top: 13,
-                      right: 10,
                       bottom: 13,
+                      right: 18,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: mediumGreyColor),
+                      borderSide: BorderSide(color: secondaryColor, width: 1),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: mediumGreyColor),
+                      borderSide: BorderSide(color: secondaryColor, width: 1),
                     ),
-                    hintText: 'cth. jalan jendral sudirman, disamping gang...',
-                    hintStyle: secondaryTextStyle,
                   ),
                   value: metodePengiriman,
                   items:
@@ -195,9 +193,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 SizedBox(height: 10),
                 DropdownButtonFormField<String>(
                   icon: Image.asset(
-                    'assets/icon/ic-arrow.png',
-                    width: 12.4,
-                    height: 7.9,
+                    "assets/icon/ic-arrow.png",
+                    width: 16,
+                    height: 16,
                   ),
                   decoration: InputDecoration(
                     fillColor: lightGrayColor,
@@ -205,8 +203,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     contentPadding: EdgeInsets.only(
                       left: 16,
                       top: 13,
-                      right: 10,
                       bottom: 13,
+                      right: 18,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -216,8 +214,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(color: mediumGreyColor),
                     ),
-                    hintText: 'cth. jalan jendral sudirman, disamping gang...',
-                    hintStyle: secondaryTextStyle,
                   ),
                   value: metodeBayar,
                   items:
