@@ -52,7 +52,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 width: 20,
                 height: 20,
               ),
-
+              activeIcon: Image.asset(
+                'assets/icon/ic-home-green.png',
+                width: 20,
+                height: 20,
+              ),
               label: "Beranda",
             ),
             BottomNavigationBarItem(
@@ -61,7 +65,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 width: 20,
                 height: 20,
               ),
-
+              activeIcon: Image.asset(
+                'assets/icon/ic-cart-green.png',
+                width: 20,
+                height: 20,
+              ),
               label: "Keranjang",
             ),
             BottomNavigationBarItem(
@@ -70,7 +78,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 width: 20,
                 height: 20,
               ),
-
+              activeIcon: Image.asset(
+                'assets/icon/ic-pesanan-green.png',
+                width: 20,
+                height: 20,
+              ),
               label: "Pesanan",
             ),
             BottomNavigationBarItem(
@@ -79,7 +91,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 width: 20,
                 height: 20,
               ),
-
+              activeIcon: Image.asset(
+                'assets/icon/ic-profil-green.png',
+                width: 20,
+                height: 20,
+              ),
               label: "Profil",
             ),
           ],
