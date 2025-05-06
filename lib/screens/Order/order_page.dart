@@ -41,11 +41,11 @@ class OrderPage extends StatelessWidget {
             ),
           ),
           OrderWidget(
-            tanggal: '14/02/2025', 
-            items: 'Apel Fuji (2Kg), Wortel (1kg)', 
-            totalHarga: 'Rp 75.000', 
-            status: 'Selesai'
-            )
+            tanggal: '14/02/2025',
+            items: 'Apel Fuji (2Kg), Wortel (1kg)',
+            totalHarga: 'Rp 75.000',
+            status: 'Selesai',
+          ),
         ],
       ),
     );
