@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sygara_app/screens/bottom_nav_bar.dart';
+import 'package:get/get.dart';
+import 'package:sygara_app/Controllers/auth_controllers.dart';
 import 'package:sygara_app/screens/login_page.dart';
 import 'package:sygara_app/themes/themes.dart';
 
@@ -13,6 +14,8 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
+
+  final authC = Get.put(AuthControllers());
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Text('Nama Lengkap', style: titleTextStyle),
             SizedBox(height: 8),
             TextFormField(
+              controller: authC.name,
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(
@@ -67,6 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Text('Nomor Telepon', style: titleTextStyle),
             SizedBox(height: 8),
             TextFormField(
+              controller: authC.telepon,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(
@@ -90,6 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Text('Email', style: titleTextStyle),
             SizedBox(height: 8),
             TextFormField(
+              controller: authC.email,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(
@@ -113,6 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Text('Buat Password', style: titleTextStyle),
             SizedBox(height: 8),
             TextFormField(
+              controller: authC.password,
               obscureText: _obscurePassword,
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
@@ -192,10 +199,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BottomNavBar()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => BottomNavBar()),
+                  // );
+                  authC.register();
                 },
                 child: Text('Daftar', style: whiteTextStyle),
               ),

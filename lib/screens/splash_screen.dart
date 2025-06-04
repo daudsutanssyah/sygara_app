@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sp_util/sp_util.dart';
+import 'package:sygara_app/screens/bottom_nav_bar.dart';
 import 'package:sygara_app/screens/login_page.dart';
 import 'package:sygara_app/themes/themes.dart';
 
@@ -22,10 +25,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void movingPage() {
     Timer(Duration(seconds: 2), () {
+
+      if (SpUtil.getString("email") == null || SpUtil.getString("email") == "") {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),
       );
+        
+      } else {
+        Get.offAll(BottomNavBar());
+      }
+
     });
   }
 
