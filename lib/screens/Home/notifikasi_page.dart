@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sygara_app/themes/themes.dart';
+import 'package:sygara_app/themes/app_colors.dart';
+import 'package:sygara_app/themes/app_text_styles.dart';
+// import 'package:sygara_app/themes/themes.dart';
 
 class NotifikasiPage extends StatelessWidget {
   const NotifikasiPage({super.key});
@@ -18,16 +20,13 @@ class NotifikasiPage extends StatelessWidget {
             height: 40,
           ),
         ),
-        title: Text('Notifikasi', style: greyTextStyle),
+        title: Text('Notifikasi', style: AppTextStyles.h4),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: Text(
               'Tandai terbaca',
-              style: primaryTextStyle.copyWith(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
+              style: AppTextStyles.bodyLarge.copyWith(color: AppColors.primary),
             ),
           ),
         ],
@@ -37,34 +36,31 @@ class NotifikasiPage extends StatelessWidget {
           Container(
             height: 80,
             width: double.infinity,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 30),
+            margin: const EdgeInsets.only(left: 20, right: 20, top: 30),
             decoration: BoxDecoration(
-              color: mintGreenColor,
+              color: AppColors.mintGreen,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Horee!! Pesanan Anda sedang diproses 🎉',
-                        style: greyTextStyle.copyWith(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Horee!! Pesanan Anda sedang diproses 🎉',
+                          style: AppTextStyles.h4,
                         ),
-                      ),
-                      SizedBox(height: 6),
-                      Text(
-                        'Cek di laman Pesanan sekarang!',
-                        style: greyTextStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
+                        const SizedBox(height: 6),
+                        Text(
+                          'Cek di laman Pesanan sekarang!',
+                          style: AppTextStyles.bodyLarge,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -73,35 +69,32 @@ class NotifikasiPage extends StatelessWidget {
           Container(
             height: 80,
             width: double.infinity,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 14),
+            margin: const EdgeInsets.only(left: 20, right: 20, top: 14),
             decoration: BoxDecoration(
-              color: whiteColor,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Color(0xFFEAEAEA)),
+              border: Border.all(color: AppColors.border),
             ),
             child: Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Pesanan Anda sudah sampai!',
-                        style: greyTextStyle.copyWith(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Pesanan Anda sudah sampai!',
+                          style: AppTextStyles.h4,
                         ),
-                      ),
-                      SizedBox(height: 6),
-                      Text(
-                        'Anda bisa cek kelengkapan Pesanan',
-                        style: greyTextStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
+                        const SizedBox(height: 6),
+                        Text(
+                          'Anda bisa cek kelengkapan Pesanan',
+                          style: AppTextStyles.bodyLarge,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),

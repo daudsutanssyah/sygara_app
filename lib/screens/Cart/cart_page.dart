@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sygara_app/screens/checkout_page.dart';
-import 'package:sygara_app/themes/themes.dart';
-import 'package:sygara_app/widgets/card_widget.dart';
+import 'package:sygara_app/screens/checkout/checkout_page.dart';
+import 'package:sygara_app/themes/app_colors.dart';
+import 'package:sygara_app/themes/app_text_styles.dart';
+import 'package:sygara_app/screens/cart/widgets/card_widget.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -20,12 +21,12 @@ class CartPage extends StatelessWidget {
             height: 40,
           ),
         ),
-        title: Text('Keranjang', style: greyTextStyle),
+        title: Text('Keranjang', style: AppTextStyles.h4),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 25, left: 20, right: 20),
+        padding: const EdgeInsets.only(top: 25, left: 20, right: 20),
         child: ListView(
-          children: [
+          children: const [
             CardWidget(
               imageUrl: 'assets/img-bayam.png',
               nama: 'Bayam',
@@ -44,18 +45,18 @@ class CartPage extends StatelessWidget {
         height: 75,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: primaryColor,
+          color: AppColors.primary,
           boxShadow: [
             BoxShadow(
-              color: blackColor.withAlpha((0.15 * 255).toInt()),
-              offset: Offset(0, -8),
+              color: AppColors.shadowMedium,
+              offset: const Offset(0, -8),
               blurRadius: 10,
               spreadRadius: 0,
             ),
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -65,40 +66,39 @@ class CartPage extends StatelessWidget {
                 children: [
                   Text(
                     'Sub Total',
-                    style: whiteTextStyle.copyWith(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
+                    style: AppTextStyles.bodyMedium.copyWith(
+                      color: AppColors.white,
                     ),
                   ),
                   Text(
                     'Rp 25.000',
-                    style: whiteTextStyle.copyWith(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: AppTextStyles.h2.copyWith(color: AppColors.white),
                   ),
                 ],
               ),
-              Container(
+              SizedBox(
                 width: 176,
                 height: 45,
-                decoration: BoxDecoration(
-                  color: whiteColor,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(context, 
-                      MaterialPageRoute(builder: (context) => CheckoutPage()));
-                    },
-                    child: Text(
-                      'Beli',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CheckoutPage(),
                       ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.white,
+                    foregroundColor: AppColors.primary,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                  ),
+                  child: Text(
+                    'Beli',
+                    style: AppTextStyles.h5.copyWith(color: AppColors.primary),
                   ),
                 ),
               ),

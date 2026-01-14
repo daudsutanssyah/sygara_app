@@ -1,23 +1,7 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sp_util/sp_util.dart';
-import 'package:sygara_app/screens/Cart/cart_page.dart';
-import 'package:sygara_app/screens/Home/category_buah.dart';
-import 'package:sygara_app/screens/Home/home_screen.dart';
-import 'package:sygara_app/screens/Order/empty_order_page.dart';
-import 'package:sygara_app/screens/Order/order_page.dart';
-import 'package:sygara_app/screens/Profil/edit_profil_page.dart';
-import 'package:sygara_app/screens/Profil/profil_page.dart';
-import 'package:sygara_app/screens/Profil/reset_password_page.dart';
-import 'package:sygara_app/screens/bottom_nav_bar.dart';
-import 'package:sygara_app/screens/checkout_page.dart';
-import 'package:sygara_app/screens/detail_page.dart';
-import 'package:sygara_app/screens/login_page.dart';
-import 'package:sygara_app/screens/register_page.dart';
-import 'package:sygara_app/screens/splash_screen.dart';
-import 'package:sygara_app/screens/succes_page.dart';
+import 'package:sygara_app/screens/navigation/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

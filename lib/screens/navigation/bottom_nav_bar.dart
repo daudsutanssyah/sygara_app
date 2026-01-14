@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sygara_app/screens/Cart/cart_page.dart';
-import 'package:sygara_app/screens/Home/home_screen.dart';
-import 'package:sygara_app/screens/Order/order_page.dart';
-import 'package:sygara_app/screens/Profil/profil_page.dart';
-import 'package:sygara_app/themes/themes.dart';
+import 'package:sygara_app/screens/cart/cart_page.dart';
+import 'package:sygara_app/screens/home/home_screen.dart';
+import 'package:sygara_app/screens/order/order_page.dart';
+import 'package:sygara_app/screens/profil/profil_page.dart';
+import 'package:sygara_app/themes/app_colors.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -15,7 +15,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int selectedIndex = 0;
 
-  final List<Widget> screenList = [
+  final List<Widget> screenList = const [
     HomeScreen(),
     CartPage(),
     OrderPage(),
@@ -37,8 +37,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: blackColor.withAlpha((0.15 * 255).toInt()),
-              offset: Offset(0, -8),
+              color: AppColors.shadowMedium,
+              offset: const Offset(0, -8),
               blurRadius: 10,
               spreadRadius: 0,
             ),
@@ -100,18 +100,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ],
           currentIndex: selectedIndex,
-          selectedItemColor: primaryColor,
-          unselectedItemColor: secondaryColor,
+          selectedItemColor: AppColors.primary,
+          unselectedItemColor: AppColors.textSecondary,
           onTap: itemOnTapped,
-          backgroundColor: whiteColor,
+          backgroundColor: AppColors.white,
           type: BottomNavigationBarType.fixed,
           selectedLabelStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
           ),
           unselectedLabelStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
           ),
         ),
       ),

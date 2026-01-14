@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sygara_app/screens/Home/category_buah.dart';
-import 'package:sygara_app/screens/Home/category_sayur.dart';
-import 'package:sygara_app/screens/Home/widgets/categories.dart';
-import 'package:sygara_app/screens/Home/widgets/image_banner.dart';
-import 'package:sygara_app/screens/Home/widgets/search_bar.dart';
-import 'package:sygara_app/themes/themes.dart';
-import 'package:sygara_app/widgets/product_widget.dart';
+import 'package:sygara_app/data/mock/mock_data.dart';
+import 'package:sygara_app/data/models/product.dart';
+import 'package:sygara_app/screens/category/categories.dart';
+import 'package:sygara_app/screens/category/widgets/category_buah.dart';
+import 'package:sygara_app/screens/category/widgets/category_sayur.dart';
+import 'package:sygara_app/screens/home/widgets/image_banner.dart';
+import 'package:sygara_app/screens/home/widgets/search_bar.dart';
+import 'package:sygara_app/themes/app_colors.dart';
+import 'package:sygara_app/screens/product/widgets/product_section.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,162 +15,69 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          SizedBox(height: 42),
-          // search bar
-          MySearchBar(),
-          SizedBox(height: 21),
-          // kategori
-          Categories(),
-          SizedBox(height: 17),
-          // banner
-          ImageBanner(),
-          SizedBox(height: 21),
-          // rekomendasi
-          Container(
-            margin: EdgeInsets.only(left: 20),
-            child: Text('Rekomendasi untuk Anda', style: titleTextStyle),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20, right: 20, top: 17),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  ProductWidget(
-                    imgUrl: 'assets/img-pisang.png',
-                    nama: 'Pisang Cavendish',
-                    harga: 'Rp. 15.000/kg',
-                  ),
-                  SizedBox(width: 20),
-                  ProductWidget(
-                    imgUrl: 'assets/img-bayam.png',
-                    nama: 'Bayam',
-                    harga: 'Rp. 15.000/kg',
-                  ),
-                  SizedBox(width: 20),
-                  ProductWidget(
-                    imgUrl: 'assets/img-tomat.png',
-                    nama: 'Tomat',
-                    harga: 'Rp. 10.000/kg',
-                  ),
-                ],
-              ),
-            ),
-          ),
-          // rekomendasi
+      backgroundColor: AppColors.background,
+      body: SafeArea(
+        child: ListView(
+          children: [
+            const SizedBox(height: 30),
+            const MySearchBar(),
+            const SizedBox(height: 30),
+            const ImageBanner(),
+            const SizedBox(height: 30),
+            const Categories(),
+            const SizedBox(height: 30),
 
-          // kategori buah
-          Container(
-            margin: EdgeInsets.only(left: 20, right: 20, top: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Buah Segar 🍎', style: titleTextStyle),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CategoryBuah()),
-                    );
-                  },
-                  child: Text(
-                    'Lihat lainnya',
-                    style: TextStyle(
-                      color: primaryColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ],
+            // Recommendation Section
+            ProductSection(
+              title: 'Rekomendasi untuk Anda',
+              products:
+                  MockData.recommendedProducts
+                      .map((data) => Product.fromMap(data))
+                      .toList(),
+              showSeeAll: false,
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20, right: 20, top: 17),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  ProductWidget(
-                    imgUrl: 'assets/img-apel.png',
-                    nama: 'Apel Fuji',
-                    harga: 'Rp. 25.000/kg',
-                  ),
-                  SizedBox(width: 20),
-                  ProductWidget(
-                    imgUrl: 'assets/img-semangka.png',
-                    nama: 'Semangka',
-                    harga: 'Rp. 15.000/kg',
-                  ),
-                  SizedBox(width: 20),
-                  ProductWidget(
-                    imgUrl: 'assets/img-jeruk.png',
-                    nama: 'Jeruk Sunkist',
-                    harga: 'Rp. 10.000/kg',
-                  ),
-                ],
-              ),
-            ),
-          ),
-          // kategori buah
 
-          // kategori sayur
-          Container(
-            margin: EdgeInsets.only(left: 20, right: 20, top: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Sayuran Segar 🥕', style: titleTextStyle),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CategorySayur()),
-                    );
-                  },
-                  child: Text(
-                    'Lihat lainnya',
-                    style: TextStyle(
-                      color: primaryColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ],
+            const SizedBox(height: 30),
+
+            // Fruit Section
+            ProductSection(
+              title: 'Buah Segar 🍎',
+              products:
+                  MockData.fruitProducts
+                      .map((data) => Product.fromMap(data))
+                      .toList(),
+              showSeeAll: true,
+              onSeeAll: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CategoryBuah()),
+                );
+              },
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20, right: 20, top: 17),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  ProductWidget(
-                    imgUrl: 'assets/img-wortel.png',
-                    nama: 'Wortel',
-                    harga: 'Rp. 15.000/kg',
+
+            const SizedBox(height: 30),
+
+            // Vegetable Section
+            ProductSection(
+              title: 'Sayuran Segar 🥕',
+              products:
+                  MockData.vegetableProducts
+                      .map((data) => Product.fromMap(data))
+                      .toList(),
+              showSeeAll: true,
+              onSeeAll: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CategorySayur(),
                   ),
-                  SizedBox(width: 20),
-                  ProductWidget(
-                    imgUrl: 'assets/img-brokoli.png',
-                    nama: 'Brokoli',
-                    harga: 'Rp. 25.000/kg',
-                  ),
-                  SizedBox(width: 20),
-                  ProductWidget(
-                    imgUrl: 'assets/img-tomat.png',
-                    nama: 'Tomat',
-                    harga: 'Rp. 10.000/kg',
-                  ),
-                ],
-              ),
+                );
+              },
             ),
-          ),
-          // kategori sayur
-        ],
+
+            const SizedBox(height: 30),
+          ],
+        ),
       ),
     );
   }

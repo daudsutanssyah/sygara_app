@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sygara_app/themes/themes.dart';
+import 'package:sygara_app/themes/app_colors.dart';
+import 'package:sygara_app/themes/app_text_styles.dart';
 
 class OrderWidget extends StatelessWidget {
   final String tanggal, items, totalHarga, status;
@@ -14,53 +15,41 @@ class OrderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isProcessing = status == 'Diproses';
+    final Color statusColor =
+        isProcessing ? AppColors.warning : AppColors.success;
+
     return Container(
-      padding: EdgeInsets.all(14),
+      padding: const EdgeInsets.all(14),
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      margin: const EdgeInsets.only(top: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: secondaryColor, width: 1.16),
+        border: Border.all(color: AppColors.secondary, width: 1.16),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Belanja',
-            style: greyTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          Text(
-            tanggal,
-            style: greyTextStyle.copyWith(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          SizedBox(height: 15),
-          Divider(color: mediumGreyColor, thickness: 2),
-          SizedBox(height: 18),
+          Text('Belanja', style: AppTextStyles.h5),
+          Text(tanggal, style: AppTextStyles.bodySmall),
+          const SizedBox(height: 15),
+          const Divider(color: AppColors.mediumGrey, thickness: 2),
+          const SizedBox(height: 18),
           Row(
             children: [
               Image.asset('assets/img-order.png', width: 51, height: 51),
-              SizedBox(width: 37),
+              const SizedBox(width: 37),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Item :',
-                      style: greyTextStyle.copyWith(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400,
-                      ),
+                      style: AppTextStyles.bodySmall.copyWith(fontSize: 13),
                     ),
                     Text(
                       items,
-                      style: greyTextStyle.copyWith(
-                        fontSize: 14,
+                      style: AppTextStyles.bodyMedium.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -69,23 +58,20 @@ class OrderWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Total belanja :',
-                    style: greyTextStyle.copyWith(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: AppTextStyles.caption.copyWith(fontSize: 11),
                   ),
                   Text(
                     totalHarga,
-                    style: greyTextStyle.copyWith(
-                      fontSize: 14,
+                    style: AppTextStyles.bodyMedium.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -96,20 +82,15 @@ class OrderWidget extends StatelessWidget {
                 height: 30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    // logika untuk border
-                    color: status == 'Diproses' ? yellowColor : primaryColor,
-                    width: 2,
-                  ),
+                  border: Border.all(color: statusColor, width: 2),
                 ),
                 child: Center(
                   child: Text(
                     status,
-                    style:
-                        // logika untuk teks
-                        status == 'Diproses'
-                            ? yellowTextStyle
-                            : primaryTextStyle,
+                    style: AppTextStyles.bodyMedium.copyWith(
+                      color: statusColor,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),

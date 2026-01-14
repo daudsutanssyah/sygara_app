@@ -1,229 +1,102 @@
 import 'package:flutter/material.dart';
-import 'package:sp_util/sp_util.dart';
-import 'package:sygara_app/screens/Profil/edit_profil_page.dart';
-import 'package:sygara_app/screens/Profil/reset_password_page.dart';
-import 'package:sygara_app/screens/splash_screen.dart';
-import 'package:sygara_app/themes/themes.dart';
+import 'package:sygara_app/screens/navigation/splash_screen.dart';
+import 'package:sygara_app/screens/profil/edit_profil_page.dart';
+import 'package:sygara_app/screens/profil/reset_password_page.dart';
+import 'package:sygara_app/themes/app_colors.dart';
+import 'package:sygara_app/themes/app_text_styles.dart';
 
 class ProfilPage extends StatelessWidget {
   const ProfilPage({super.key});
+
+  // Dummy data static
+  static const String dummyName = 'Ahmad Fulan';
+  static const String dummyEmail = 'ahmad.fulan@email.com';
+  static const String dummyPhone = '628123456789';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Profil',
-          style: greyTextStyle.copyWith(
-            fontSize: 24,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        title: Text('Profil', style: AppTextStyles.h2),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => EditProfilPage()),
+                MaterialPageRoute(builder: (context) => const EditProfilPage()),
               );
             },
             child: Text(
               'Edit Profil',
-              style: primaryTextStyle.copyWith(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
+              style: AppTextStyles.bodyLarge.copyWith(color: AppColors.primary),
             ),
           ),
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: ListView(
                 children: [
-                  SizedBox(height: 36),
-                  Text(
-                    'Nama Lengkap',
-                    style: greyTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    SpUtil.getString("userName").toString(),
-                    style: blackTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 21),
-                  Divider(color: mediumGreyColor, thickness: 2),
-                  SizedBox(height: 14),
-                  Text(
-                    'Email',
-                    style: greyTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    SpUtil.getString("email").toString(),
-                    style: blackTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 21),
-                  Divider(color: mediumGreyColor, thickness: 2),
-                  SizedBox(height: 14),
-                  Text(
-                    'Nomor Telepon',
-                    style: greyTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    SpUtil.getString("telepon").toString(),
-                    style: blackTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 21),
-                  Divider(color: mediumGreyColor, thickness: 2),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 36),
+                  _buildProfileField(label: 'Nama Lengkap', value: dummyName),
+                  const SizedBox(height: 21),
+                  const Divider(color: AppColors.mediumGrey, thickness: 2),
+                  const SizedBox(height: 14),
+                  _buildProfileField(label: 'Email', value: dummyEmail),
+                  const SizedBox(height: 21),
+                  const Divider(color: AppColors.mediumGrey, thickness: 2),
+                  const SizedBox(height: 14),
+                  _buildProfileField(label: 'Nomor Telepon', value: dummyPhone),
+                  const SizedBox(height: 21),
+                  const Divider(color: AppColors.mediumGrey, thickness: 2),
+                  const SizedBox(height: 24),
                   InkWell(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ResetPasswordPage(),
+                          builder: (context) => const ResetPasswordPage(),
                         ),
                       );
                     },
-                    child: Row(
-                      children: [
-                        Text(
-                          'Reset Password',
-                          style: greyTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                    borderRadius: BorderRadius.circular(8),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Reset Password',
+                            style: AppTextStyles.bodyLarge.copyWith(
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 16,
-                          color: mediumGreyColor,
-                        ),
-                      ],
+                          const Spacer(),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 16,
+                            color: AppColors.mediumGrey,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 50),
+              padding: const EdgeInsets.only(bottom: 50),
               child: InkWell(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        contentPadding: EdgeInsets.only(top: 28),
-                        content: Text(
-                          'Yakin ingin Log Out?',
-                          style: blackTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        actionsPadding: EdgeInsets.only(
-                          top: 20,
-                          left: 20,
-                          right: 20,
-                          bottom: 28,
-                        ),
-                        actionsAlignment: MainAxisAlignment.center,
-                        actions: [
-                          Row(
-                            children: [
-                              SizedBox(
-                                height: 45,
-                                width: 140,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: primaryColor,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text('Batal', style: whiteTextStyle),
-                                ),
-                              ),
-                              SizedBox(width: 11),
-                              SizedBox(
-                                height: 45,
-                                width: 140,
-                                child: OutlinedButton(
-                                  style: OutlinedButton.styleFrom(
-                                    side: BorderSide(
-                                      color: brightRedColor,
-                                      width: 2,
-                                    ),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    SpUtil.remove("idUser");
-                                    SpUtil.remove("email");
-                                    SpUtil.remove("name");
-                                    SpUtil.remove("telepon");
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => SplashScreen(),
-                                      ),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Yakin',
-                                    style: TextStyle(
-                                      color: brightRedColor,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-                child: Text(
-                  'Log Out',
-                  style: TextStyle(
-                    color: redColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                onTap: () => _showLogoutDialog(context),
+                borderRadius: BorderRadius.circular(8),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    'Log Out',
+                    style: AppTextStyles.h4.copyWith(color: AppColors.error),
                   ),
                 ),
               ),
@@ -231,6 +104,104 @@ class ProfilPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildProfileField({required String label, required String value}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: AppTextStyles.bodyLarge.copyWith(
+            color: AppColors.textSecondary,
+          ),
+        ),
+        const SizedBox(height: 6),
+        Text(value, style: AppTextStyles.h5),
+      ],
+    );
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          contentPadding: const EdgeInsets.only(top: 28),
+          content: Text(
+            'Yakin ingin Log Out?',
+            style: AppTextStyles.h5,
+            textAlign: TextAlign.center,
+          ),
+          actionsPadding: const EdgeInsets.only(
+            top: 20,
+            left: 20,
+            right: 20,
+            bottom: 28,
+          ),
+          actionsAlignment: MainAxisAlignment.center,
+          actions: [
+            Row(
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: 45,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Batal', style: AppTextStyles.buttonMedium),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 11),
+                Expanded(
+                  child: SizedBox(
+                    height: 45,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                          color: AppColors.error,
+                          width: 2,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        // Navigate ke splash/login
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SplashScreen(),
+                          ),
+                          (route) => false,
+                        );
+                      },
+                      child: Text(
+                        'Yakin',
+                        style: AppTextStyles.buttonMedium.copyWith(
+                          color: AppColors.error,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
     );
   }
 }
