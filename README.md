@@ -1,16 +1,69 @@
-# sygara_app
+# 🛒 Sygara App
 
-A new Flutter project.
+Aplikasi e-commerce mobile untuk produk segar (buah & sayuran) yang dibangun dengan Flutter.
 
-## Getting Started
+## 🌐 Live Demo
 
-This project is a starting point for a Flutter application.
+- **[🔗 Web Demo](https://daudsutanssyah.github.io/sygara_app/)** - Try it now!
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Fitur
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 🔐 Login & Register
+- 🏠 Home dengan kategori produk
+- 📦 Detail produk
+- 🛒 Keranjang belanja
+- 💳 Checkout & pembayaran
+- 📋 Riwayat pesanan
+- 👤 Profil pengguna
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Teknologi
+
+- Flutter 3.0+
+- Dart 3.0+
+- Material Design 3
+- Google Fonts
+
+## 📦 Instalasi & Development
+
+```bash
+# Clone repository
+git clone https://github.com/daudsutanssyah/sygara_app.git
+
+# Install dependencies
+cd sygara_app
+flutter pub get
+
+# Run on mobile
+flutter run
+
+# Run on web
+flutter run -d chrome
+
+# Build APK
+flutter build apk --release
+
+# Build Web
+flutter build web --release
+```
+
+## 🎨 Design System
+
+- **Primary Color:** #25B976 (Green)
+- **Font:** Outfit (Google Fonts)
+- **Architecture:** Clean Architecture
+
+## 👨‍💻 Developer
+
+**Daud Sutanssyah**
+
+- GitHub: [@daudsutanssyah](https://github.com/daudsutanssyah)
+- LinkedIn: [Your LinkedIn]
+- Portfolio: [Your Portfolio]
+
+## 📄 License
+
+MIT License
+
+---
+
+⭐ Star jika project ini membantu!
