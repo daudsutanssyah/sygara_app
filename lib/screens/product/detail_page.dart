@@ -55,7 +55,24 @@ class _DetailPageState extends State<DetailPage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: Image.asset(widget.product.image)),
+              Center(
+                child: ClipRRect(
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: 300,
+                      maxHeight: 300,
+                    ),
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: AppColors.paleGreen.withValues(alpha: 0.2),
+                    ),
+                    child: Image.asset(
+                      widget.product.image,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(height: 11),
               Text(widget.product.name, style: AppTextStyles.h2),
               const SizedBox(height: 8),
