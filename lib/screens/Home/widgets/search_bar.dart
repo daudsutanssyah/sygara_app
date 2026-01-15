@@ -19,15 +19,12 @@ class MySearchBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: AppColors.mediumGrey),
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16, right: 8),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'cari apa? (cth. bayam, apel, etc.)',
-                    hintStyle: AppTextStyles.bodyLarge.copyWith(
-                      color: AppColors.mediumGrey,
-                    ),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'cari apa? (cth. bayam, apel, etc.)',
+                  hintStyle: AppTextStyles.bodyLarge.copyWith(
+                    color: AppColors.mediumGrey,
                   ),
                 ),
               ),

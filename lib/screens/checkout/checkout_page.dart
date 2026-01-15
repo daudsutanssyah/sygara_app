@@ -3,6 +3,7 @@ import 'package:sygara_app/screens/checkout/succes_page.dart';
 import 'package:sygara_app/themes/app_colors.dart';
 import 'package:sygara_app/themes/app_text_styles.dart';
 import 'package:sygara_app/screens/checkout/widgets/checkout_widget.dart';
+import 'package:sygara_app/widgets/price_bottom_bar.dart';
 
 class CheckoutPage extends StatefulWidget {
   const CheckoutPage({super.key});
@@ -137,63 +138,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        height: 75,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.shadowMedium,
-              offset: const Offset(0, -8),
-              blurRadius: 10,
-              spreadRadius: 0,
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Harga Total',
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: AppColors.white,
-                    ),
-                  ),
-                  Text(
-                    'Rp 35.000',
-                    style: AppTextStyles.h2.copyWith(color: AppColors.white),
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: 176,
-                height: 45,
-                child: ElevatedButton(
-                  onPressed: () => _showConfirmationDialog(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.white,
-                    foregroundColor: AppColors.primary,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Text(
-                    'Beli',
-                    style: AppTextStyles.h5.copyWith(color: AppColors.primary),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+      bottomNavigationBar: PriceBottomBar(
+        priceLabel: 'Harga Total',
+        priceValue: 'Rp 35.000',
+        buttonText: 'Beli',
+        onPressed: () => _showConfirmationDialog(context),
       ),
     );
   }
@@ -317,62 +266,86 @@ class _CheckoutPageState extends State<CheckoutPage> {
   void _showConfirmationDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext dialogContext) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          title: Center(
-            child: Text(
-              'Proses pesanan sekarang?',
-              style: AppTextStyles.h5,
-              textAlign: TextAlign.center,
-            ),
-          ),
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          contentPadding: const EdgeInsets.fromLTRB(20, 28, 20, 0),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SuccesPage(),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Text('Ya Proses', style: AppTextStyles.buttonMedium),
-                ),
-              ),
-              const SizedBox(width: 11),
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: AppColors.error),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Text(
-                    'Batalkan',
-                    style: AppTextStyles.buttonMedium.copyWith(
-                      color: AppColors.error,
-                    ),
-                  ),
-                ),
+              Text(
+                'Proses pesanan sekarang?',
+                style: AppTextStyles.h5,
+                textAlign: TextAlign.center,
               ),
             ],
           ),
+          actionsPadding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
+          actions: [
+            Row(
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: 45,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        Navigator.pop(dialogContext);
+
+                        await Future.delayed(const Duration(milliseconds: 300));
+
+                        if (!context.mounted) return;
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SuccesPage(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text(
+                        'Ya Proses',
+                        style: AppTextStyles.buttonMedium,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 11),
+                Expanded(
+                  child: SizedBox(
+                    height: 45,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.pop(dialogContext);
+                      },
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                          color: AppColors.error,
+                          width: 2,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text(
+                        'Batalkan',
+                        style: AppTextStyles.buttonMedium.copyWith(
+                          color: AppColors.error,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         );
       },
     );

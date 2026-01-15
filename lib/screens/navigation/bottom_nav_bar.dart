@@ -30,10 +30,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    // Get screen size for responsive sizing
+    final screenHeight = MediaQuery.of(context).size.height;
+    final isSmallScreen = screenHeight < 600;
+
+    // Responsive sizes
+    final iconSize = isSmallScreen ? 18.0 : 20.0;
+    final fontSize = isSmallScreen ? 10.0 : 12.0;
+
     return Scaffold(
       body: screenList[selectedIndex],
       bottomNavigationBar: Container(
-        height: 78,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -49,52 +56,52 @@ class _BottomNavBarState extends State<BottomNavBar> {
             BottomNavigationBarItem(
               icon: Image.asset(
                 "assets/icon/ic-home.png",
-                width: 20,
-                height: 20,
+                width: iconSize,
+                height: iconSize,
               ),
               activeIcon: Image.asset(
                 'assets/icon/ic-home-green.png',
-                width: 20,
-                height: 20,
+                width: iconSize,
+                height: iconSize,
               ),
               label: "Beranda",
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
                 "assets/icon/ic-cart.png",
-                width: 20,
-                height: 20,
+                width: iconSize,
+                height: iconSize,
               ),
               activeIcon: Image.asset(
                 'assets/icon/ic-cart-green.png',
-                width: 20,
-                height: 20,
+                width: iconSize,
+                height: iconSize,
               ),
               label: "Keranjang",
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
                 "assets/icon/ic-pesanan.png",
-                width: 20,
-                height: 20,
+                width: iconSize,
+                height: iconSize,
               ),
               activeIcon: Image.asset(
                 'assets/icon/ic-pesanan-green.png',
-                width: 20,
-                height: 20,
+                width: iconSize,
+                height: iconSize,
               ),
               label: "Pesanan",
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
                 "assets/icon/ic-profil.png",
-                width: 20,
-                height: 20,
+                width: iconSize,
+                height: iconSize,
               ),
               activeIcon: Image.asset(
                 'assets/icon/ic-profil-green.png',
-                width: 20,
-                height: 20,
+                width: iconSize,
+                height: iconSize,
               ),
               label: "Profil",
             ),
@@ -105,14 +112,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
           onTap: itemOnTapped,
           backgroundColor: AppColors.white,
           type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: const TextStyle(
-            fontSize: 12,
+          selectedLabelStyle: TextStyle(
+            fontSize: fontSize,
             fontWeight: FontWeight.w600,
           ),
-          unselectedLabelStyle: const TextStyle(
-            fontSize: 12,
+          unselectedLabelStyle: TextStyle(
+            fontSize: fontSize,
             fontWeight: FontWeight.w400,
           ),
+
+          elevation: 0,
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:sygara_app/data/models/product.dart';
 import 'package:sygara_app/screens/cart/cart_page.dart';
 import 'package:sygara_app/themes/app_colors.dart';
 import 'package:sygara_app/themes/app_text_styles.dart';
+import 'package:sygara_app/widgets/price_bottom_bar.dart';
 
 class DetailPage extends StatefulWidget {
   final Product product; // Terima product
@@ -119,63 +120,13 @@ class _DetailPageState extends State<DetailPage> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        height: 75,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.shadowMedium,
-              offset: const Offset(0, -8),
-              blurRadius: 10,
-              spreadRadius: 0,
-            ),
-          ],
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Harga',
-                  style: AppTextStyles.bodyMedium.copyWith(
-                    color: AppColors.white,
-                  ),
-                ),
-                Text(
-                  widget.product.getPriceWithQuantity(quantity),
-                  style: AppTextStyles.h2.copyWith(color: AppColors.white),
-                ),
-              ],
-            ),
-            SizedBox(
-              width: 176,
-              height: 45,
-              child: ElevatedButton(
-                onPressed: () {
-                  _showSuccessDialog(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.white,
-                  foregroundColor: AppColors.primary,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Text(
-                  '+ Keranjang',
-                  style: AppTextStyles.h5.copyWith(color: AppColors.primary),
-                ),
-              ),
-            ),
-          ],
-        ),
+      bottomNavigationBar: PriceBottomBar(
+        priceLabel: 'Harga',
+        priceValue: widget.product.getPriceWithQuantity(quantity),
+        buttonText: '+ Keranjang',
+        onPressed: () {
+          _showSuccessDialog(context);
+        },
       ),
     );
   }

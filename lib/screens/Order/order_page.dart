@@ -32,6 +32,9 @@ class OrderPage extends StatelessWidget {
             totalHarga: 'Rp 75.000',
             status: 'Selesai',
           ),
+          const SizedBox(
+            height: 20.0,
+          ),
         ],
       ),
     );

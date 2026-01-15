@@ -19,7 +19,7 @@ class Categories extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CategoryBuah()),
+                  MaterialPageRoute(builder: (context) => const CategoryBuah()),
                 );
               },
             ),
@@ -32,7 +32,9 @@ class Categories extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CategorySayur()),
+                  MaterialPageRoute(
+                    builder: (context) => const CategorySayur(),
+                  ),
                 );
               },
             ),
@@ -57,6 +59,14 @@ class _CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get screen width untuk responsive sizing
+    final screenWidth = MediaQuery.of(context).size.width;
+    final cardWidth = (screenWidth - 56) / 2; // 56 = padding + gap
+
+    // Calculate responsive sizes
+    final imageSize = cardWidth * 0.35; // 35% dari card width
+    final fontSize = cardWidth * 0.11; // Responsive font size
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
@@ -74,27 +84,33 @@ class _CategoryCard extends StatelessWidget {
         ),
         child: Container(
           height: 96,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
+                flex: 6,
                 child: Text(
                   title,
                   style: TextStyle(
                     color: AppColors.primary,
-                    fontSize: 18,
+                    fontSize: fontSize.clamp(14.0, 18.0), // Min 14, max 18
                     fontWeight: FontWeight.w700,
                     height: 1.2,
                   ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
-              const SizedBox(width: 8),
-              Image.asset(
-                imagePath,
-                width: 52,
-                height: 52,
-                fit: BoxFit.contain,
+              const SizedBox(width: 6),
+              Expanded(
+                flex: 4,
+                child: Image.asset(
+                  imagePath,
+                  width: imageSize.clamp(40.0, 60.0), // Min 40, max 60
+                  height: imageSize.clamp(40.0, 60.0),
+                  fit: BoxFit.contain,
+                ),
               ),
             ],
           ),
