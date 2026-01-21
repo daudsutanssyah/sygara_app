@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sygara_app/data/mock/mock_data.dart';
 import 'package:sygara_app/data/models/product.dart';
+import 'package:sygara_app/screens/category/widgets/product_grid_widget.dart';
 import 'package:sygara_app/themes/app_colors.dart';
 import 'package:sygara_app/themes/app_text_styles.dart';
-import 'package:sygara_app/screens/product/widgets/product_widget.dart';
 
 class CategoryBuah extends StatelessWidget {
   const CategoryBuah({super.key});
@@ -78,7 +78,7 @@ class CategoryBuah extends StatelessWidget {
           childAspectRatio: 0.75, // Width:Height ratio
         ),
         itemBuilder: (context, index) {
-          return ProductWidget(product: products[index]);
+          return ProductGridWidget(product: products[index]);
         },
       ),
     );

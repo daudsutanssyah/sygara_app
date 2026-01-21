@@ -6,7 +6,7 @@ import 'package:sygara_app/themes/app_text_styles.dart';
 // import 'package:sygara_app/themes/themes.dart';
 
 class ProductWidget extends StatelessWidget {
-  final Product product; // Ganti ke Product model
+  final Product product;
 
   const ProductWidget({super.key, required this.product});
 
@@ -16,9 +16,7 @@ class ProductWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (context) => DetailPage(product: product), // Pass product
-          ),
+          MaterialPageRoute(builder: (context) => DetailPage(product: product)),
         );
       },
       borderRadius: BorderRadius.circular(30),

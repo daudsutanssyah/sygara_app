@@ -29,15 +29,16 @@ class CartPage extends StatelessWidget {
           children: const [
             CardWidget(
               imageUrl: 'assets/img-bayam.png',
-              nama: 'Bayam',
-              totalHarga: 'Rp 15.000 ',
+              name: 'Bayam',
+              totalPrice: 'Rp 15.000 ',
             ),
             SizedBox(height: 15),
             CardWidget(
               imageUrl: 'assets/img-tomat.png',
-              nama: 'Tomat',
-              totalHarga: 'Rp 10.000',
+              name: 'Tomat',
+              totalPrice: 'Rp 10.000',
             ),
+            SizedBox(height: 15.0),
           ],
         ),
       ),

@@ -28,7 +28,7 @@ class Product {
     );
   }
 
-  // Method untuk convert ke Map
+  /// Method untuk convert ke Map
   Map<String, String> toMap() {
     return {
       'id': id,
@@ -40,7 +40,7 @@ class Product {
     };
   }
 
-  // Parse harga ke integer (remove "Rp. " dan "/kg")
+  /// Parse harga ke integer (remove "Rp. " dan "/kg")
   int get priceValue {
     final priceStr = price
         .replaceAll('Rp. ', '')
@@ -49,7 +49,7 @@ class Product {
     return int.tryParse(priceStr) ?? 0;
   }
 
-  // Format harga dengan quantity
+  /// Format harga dengan quantity
   String getPriceWithQuantity(int quantity) {
     final total = priceValue * quantity;
     return 'Rp ${total.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.')}';

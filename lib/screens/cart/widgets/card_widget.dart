@@ -4,14 +4,14 @@ import 'package:sygara_app/themes/app_text_styles.dart';
 
 class CardWidget extends StatefulWidget {
   final String imageUrl;
-  final String nama;
-  final String totalHarga;
+  final String name;
+  final String totalPrice;
 
   const CardWidget({
     super.key,
     required this.imageUrl,
-    required this.nama,
-    required this.totalHarga,
+    required this.name,
+    required this.totalPrice,
   });
 
   @override
@@ -63,7 +63,7 @@ class _CardWidgetState extends State<CardWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(widget.nama, style: AppTextStyles.h5),
+                Text(widget.name, style: AppTextStyles.h5),
                 const SizedBox(height: 8),
                 Text('Berat/Kg :', style: AppTextStyles.bodyMedium),
                 const SizedBox(height: 4),
@@ -105,7 +105,7 @@ class _CardWidgetState extends State<CardWidget> {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  widget.totalHarga,
+                  widget.totalPrice,
                   style: AppTextStyles.h5.copyWith(color: AppColors.primary),
                 ),
               ],

@@ -67,8 +67,6 @@ flutter build web --release --base-href "/sygara_app/"
 **Daud Sutanssyah**
 
 - GitHub: [@daudsutanssyah](https://github.com/daudsutanssyah)
-- LinkedIn: [Your LinkedIn]
-- Portfolio: [Your Portfolio]
 
 ## 📄 License
 
@@ -81,5 +79,6 @@ MIT License
 ⭐ Star jika project ini membantu!
 
 Made with ❤️ using Flutter
+
 
 </div>
