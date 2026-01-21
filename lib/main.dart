@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:device_preview/device_preview.dart';
 import 'package:get/get.dart';
-import 'package:sygara_app/screens/navigation/bottom_nav_bar.dart';
+import 'package:sygara_app/screens/navigation/splash_screen.dart';
 import 'package:sygara_app/themes/app_theme.dart';
 
 void main() {
   runApp(
     DevicePreview(
-      enabled: kIsWeb, // Hanya aktif di web
+      enabled: kIsWeb, /// Hanya aktif di web
       builder: (context) => const MyApp(),
     ),
   );
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sygara App',
       theme: AppTheme.lightTheme,
-      home: const BottomNavBar(),
+      home: const SplashScreen(),
     );
   }
 }
